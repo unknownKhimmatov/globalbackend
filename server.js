@@ -3,10 +3,12 @@ const cors = require("cors");
 const app = express();
 const connect = require("./config/db");
 const router = require("./router/router");
+const env=require('dotenv')
 
 connect();
 // port
-const PORT = 3311;
+env.config()
+const PORT = process.env.PORT;
 app.use(cors());
 app.use(express.json());
 
@@ -15,5 +17,5 @@ app.use("/api", router);
 
 // server running
 app.listen(PORT, () => {
-  console.log("********* server running on port 3429 *********");
-});
+  console.log("********* server running on port 3311 *********");
+})
